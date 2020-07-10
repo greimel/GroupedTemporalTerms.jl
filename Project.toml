@@ -10,6 +10,10 @@ StatsModels = "3eaba693-59b7-5ba5-a881-562e759f1c8d"
 Underscores = "d9a01c3f-67ce-4d8c-9b55-35f6e4050bb1"
 
 [compat]
+DataFrames = "0.21"
+ShiftedArrays = "1"
+StatsModels = "0.6"
+Underscores = "2"
 julia = "1"
 
 [extras]
