@@ -3,6 +3,14 @@ uuid = "e3df3e69-96de-4eec-b47e-79221dc7d16c"
 authors = ["Fabian Greimel <fabgrei@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Atom = "c52e3926-4ff0-5f6e-af25-54175e0327b1"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Juno = "e5e0dc1b-0480-54bc-9374-aad01c23163d"
+ShiftedArrays = "1277b4bf-5013-50f5-be3d-901d8477a67a"
+StatsModels = "3eaba693-59b7-5ba5-a881-562e759f1c8d"
+Underscores = "d9a01c3f-67ce-4d8c-9b55-35f6e4050bb1"
+
 [compat]
 julia = "1"
 

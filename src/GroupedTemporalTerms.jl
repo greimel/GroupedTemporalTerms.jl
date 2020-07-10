@@ -1,5 +1,7 @@
 module GroupedTemporalTerms
 
-# Write your package code here.
+include("grouped-lag.jl")
+
+export groupedlag, GroupedLagTerm
 
 end
