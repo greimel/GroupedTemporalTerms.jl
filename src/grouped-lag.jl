@@ -1,6 +1,6 @@
 using StatsModels: StatsModels, AbstractTerm, FunctionTerm, term, terms, apply_schema, modelcols
 using ShiftedArrays: lag
-using DataFrames: DataFrame, groupby, transform!
+using DataFrames: DataFrame, groupby, transform
 using Underscores: @_
 
 struct GroupedLagTerm{T,G} <: AbstractTerm
@@ -36,10 +36,12 @@ function StatsModels.apply_schema(t::GroupedLagTerm,
 end
 
 function StatsModels.modelcols(ft::GroupedLagTerm, d::NamedTuple)
-    column, groups = modelcols(terms(ft), d)
-    df = DataFrame(column=column, groups=vec(groups))
+    column = modelcols(ft.term, d)
+    group_var = StatsModels.termvars(ft.groups)[1]
+    groups = d[group_var]
+    df = DataFrame(column=column, groups=groups)
     @_ groupby(df, :groups) |>
-        transform!(__, :column => (x -> lag(x, ft.nsteps)) => :column_lagged) |>
+        transform(__, :column => (x -> lag(x, ft.nsteps)) => :column_lagged) |>
         __.column_lagged
 end
 
