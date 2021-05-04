@@ -33,7 +33,7 @@ using StatsModels: StatsModels, schema, apply_schema, modelcols, coef
     ff = apply_schema(f, sch)
     y, X = modelcols(ff, df)
     
-    df_verify = DataFrame(X)
+    df_verify = DataFrame(X, :auto)
     rename!(df_verify, StatsModels.coefnames(ff)[2])
     
     @test isequal(df_verify."lag(x, 1)", df.x_lagged)
